@@ -19,7 +19,7 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <main-component />
+            PRODUTOS
         </div>
         <script src="{{asset('js/app.js')}}"></script>
     </body>
