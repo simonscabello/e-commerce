@@ -40,7 +40,6 @@
                 default: 'Green Marl'
             },
             width: {
-                type: String,
                 default: '300px'
             }
         }
