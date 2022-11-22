@@ -42,6 +42,12 @@
     justify-content: flex-start;
     gap: 1rem;
 
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 0;
+      align-items: center;
+    }
+
     &--label {
       margin-top: 0.2rem;
       font-size: 0.875rem;
@@ -52,6 +58,10 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+
+      @media screen and (max-width: 768px) {
+        align-items: center;
+      }
 
       &__text {
         text-decoration: none;
