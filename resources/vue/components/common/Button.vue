@@ -1,5 +1,7 @@
 <template>
-    <button class="button">
+    <button
+      class="button"
+    >
         {{ btnText }}
     </button>
 </template>
@@ -27,6 +29,7 @@
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
+    border-radius: 7px;
 
     &:hover {
       opacity: 0.75;

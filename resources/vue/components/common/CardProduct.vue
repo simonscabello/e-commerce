@@ -1,7 +1,13 @@
 <template>
-    <div class="card-product">
-        <div class="card-product__img" :style="{ 'background-image': `url(${productUrl})` }"/>
-        <div class="card-product__info">
+    <div class="card-product" @click="$emit('event')">
+        <div
+          class="card-product__img d-block w-90"
+          :style="{ 'background-image': `url(${productUrl})`, 'width': width }"
+        />
+        <div
+          class="card-product__info"
+          :style="{ 'width': width }"
+        >
             <p class="card-product__info__name">
                 {{ productName }}
             </p>
@@ -36,6 +42,9 @@
                 type: String,
                 default: 'Green Marl'
             },
+            width: {
+                default: '100%'
+            }
         }
     }
 </script>
@@ -44,7 +53,6 @@
 .card-product {
     &__img {
         height: 400px;
-        width: 300px;
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -55,6 +63,10 @@
         justify-content: space-between;
         align-items: center;
         margin-top: 0.5rem;
+
+        @media screen and (max-width: 768px) {
+          padding: 0 1rem;
+        }
 
         &__name {
             font-size: 0.75rem;
@@ -72,6 +84,10 @@
         font-size: 0.75rem;
         color: #5e5a5a;
         font-weight: 500;
+
+        @media screen and (max-width: 768px) {
+          padding: 0 1rem;
+        }
     }
 }
 </style>

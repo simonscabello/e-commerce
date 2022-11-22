@@ -9,7 +9,12 @@
             <p class="home-photos__bottom__text">
                 {{ text }}
             </p>
-            <Button btn-text="COMPRAR" />
+            <router-link :to="{ name: 'products' }"
+              class="home-photos__bottom__btn"
+              href="/produtos"
+            >
+              <Button btn-text="COMPRAR" />
+            </router-link>
         </section>
     </div>
 </template>
@@ -50,11 +55,16 @@
       }
 
       &__img2 {
-        background-position: center;
-        background-size: cover;
-        height: 100%;
-        width: 100%;
-        background-image: url(../../../assets/img/home-2.jpg);
+        display: none;
+
+        @media screen and (min-width: 768px) {
+          display: block;
+          background-position: center;
+          background-size: cover;
+          height: 100%;
+          width: 100%;
+          background-image: url(../../../assets/img/home-2.jpg);
+        }
       }
    }
 
@@ -63,12 +73,27 @@
       align-items: center;
       justify-content: space-between;
       margin: 1.5rem 1rem;
+      flex-direction: column;
+
+      @media screen and (min-width: 768px) {
+        align-items: flex-start;
+        flex-direction: row;  
+      }
 
       &__text {
-        width: 400px;
         font-size: 0.875rem;
         font-weight: 700;
         line-height: normal;
+        text-align: center;
+
+        @media screen and (min-width: 768px) {
+          width: 400px;
+          text-align: left;
+        }
+      }
+
+      &__btn {
+        text-decoration: none;
       }
    }
 }
