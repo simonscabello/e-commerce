@@ -9,12 +9,12 @@
             <p class="home-photos__bottom__text">
                 {{ text }}
             </p>
-            <a
+            <router-link :to="{ name: 'products' }"
               class="home-photos__bottom__btn"
               href="/produtos"
             >
               <Button btn-text="COMPRAR" />
-            </a>
+            </router-link>
         </section>
     </div>
 </template>

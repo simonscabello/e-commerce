@@ -11,8 +11,12 @@
 
         <nav class="header__list-container">
             <div class="header__list-container__links">
-                <a href="/produtos">Produtos</a> | 
-                <a href="/sobre">Sobre </a>
+                <router-link :to="{ name: 'products' }">
+                  Produtos
+                </router-link> | 
+                <router-link :to="{ name: 'about' }">
+                  Sobre
+                </router-link>
             </div>
         </nav>
     </header>

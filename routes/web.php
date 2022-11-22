@@ -14,16 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/produtos', function () {
-    return view('produtos');
-});
-
-Route::get('/sobre', function () {
-    return view('sobre');
-});
+Route::get('/{any}', function () {
+    return view('layouts.vue');
+})->where('any', '.*');
 
 Auth::routes();

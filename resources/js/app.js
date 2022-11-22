@@ -7,6 +7,10 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+import router from '../vue/router';
+import App from '../vue/layouts/App.vue';
+import vuex from 'vuex';
+import store from '../vue/store/index'
 
 /**
  * The following block of code may be used to automatically register your
@@ -19,7 +23,8 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('main-component', require('../vue/components/mainComponent.vue').default);
+Vue.component('main-component', require('../vue/views/Home.vue').default);
+// Vue.component('products-component', require('../vue/views/Products.vue'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -27,6 +32,9 @@ Vue.component('main-component', require('../vue/components/mainComponent.vue').d
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+ const app = new Vue({
+    router,
+    store,
     el: '#app',
+    render: h => h(App)
 });

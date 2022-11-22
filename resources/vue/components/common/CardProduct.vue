@@ -1,10 +1,13 @@
 <template>
-    <div class="card-product">
+    <div class="card-product" @click="$emit('event')">
         <div
           class="card-product__img d-block w-90"
           :style="{ 'background-image': `url(${productUrl})`, 'width': width }"
         />
-        <div class="card-product__info">
+        <div
+          class="card-product__info"
+          :style="{ 'width': width }"
+        >
             <p class="card-product__info__name">
                 {{ productName }}
             </p>
@@ -40,7 +43,7 @@
                 default: 'Green Marl'
             },
             width: {
-                default: '300px'
+                default: '100%'
             }
         }
     }

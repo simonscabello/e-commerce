@@ -5,12 +5,12 @@
                 <p>
                     NOVIDADES
                 </p>
-                <a
+                <router-link
                   class="home-products__container__redirect--btn"
-                  href="/produtos"
+                  :to="{ name: 'products' }"
                 >
                     <Button btn-text="CONFIRA OS LANÇAMENTOS" />
-                </a>
+                </router-link>
             </div>
             <div
               id="carouselExampleFade"
