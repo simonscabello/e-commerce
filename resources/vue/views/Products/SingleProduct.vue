@@ -19,6 +19,7 @@
               :btnPrice="product.price"
               buyBtn
               class="single-product__details__btn"
+              @btnEvent="addToCart()"
             />
             <p class="single-product__details__description">
               {{ product.description }}
@@ -29,6 +30,7 @@
 
 <script>
 import Button from '../../components/common/Button.vue'
+import { mapActions } from 'vuex'
 
 export default {
     name: "SingleProduct",
@@ -49,6 +51,16 @@ export default {
         },
       };
     },
+
+    methods: {
+      ...mapActions([
+        'setCart',
+      ]),
+
+      addToCart() {
+        this.setCart(this.product)
+      },
+    }
 };
 </script>
 

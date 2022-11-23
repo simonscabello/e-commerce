@@ -2,6 +2,7 @@
     <button
       :class="{ 'button__buy': buyBtn }"
       class="button"
+      @click="$emit('btnEvent')"
     >
         <p class="button__text" v-if="buyBtn">
            R$ {{ btnPrice }}
