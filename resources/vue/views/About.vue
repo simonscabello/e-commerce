@@ -7,9 +7,7 @@
             </p>
         </div>
 
-        <div class="about__img">
-            <img src="../../assets/img/about-img.jpg" alt="">
-        </div>
+        <div class="about__img" />
     </div>
 </template>
 
@@ -51,15 +49,18 @@
     }
 
     &__img {
-      img {
-        height: 660px;
-        order: unset;
+      background-image: url(../../assets/img/about-img.jpg);
+      order: unset;
+        width: 100%;
+      height: 660px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
 
-        @media screen and (max-width: 768px) {
+      @media screen and (max-width: 768px) {
         order: 1;
         height: unset;
         width: 100vw;
-      }
       }
     }
 }

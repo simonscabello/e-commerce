@@ -1,6 +1,6 @@
 <template>
   <div class="footer">
-      <div class="footer__content">
+      <div class="footer__content" :style="{ 'margin-top': marginSize }">
         <FooterContent
           v-for="info in info"
           :key="info.id"
@@ -83,6 +83,12 @@
 
     components: {
       FooterContent,
+    },
+
+    computed: {
+      marginSize() {
+        return this.$route.name === 'about' ? '0rem' : '3rem';
+      }
     },
 
     methods: {

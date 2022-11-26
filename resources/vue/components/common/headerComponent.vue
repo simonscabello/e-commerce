@@ -35,6 +35,9 @@
 
         <nav class="header__list-container">
             <div class="header__list-container__links">
+              <router-link :to="{ name: 'home' }">
+                  Início
+                </router-link>
                 <router-link :to="{ name: 'products' }">
                   Produtos
                 </router-link>

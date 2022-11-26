@@ -34,17 +34,14 @@
         <p class="item-card__column__qtd--text">
           {{ quantity }}
         </p>
-        <span class="material-symbols-outlined">
-          add
-        </span>
       </div>
     </div>
 
     <div class="item-card__column">
       <p class="item-card__column__title">
-        TOTAL
+        VALOR
       </p>
-        R$ {{ finalPrice }}
+        R$ {{ item.price }}
     </div>
   </div>
 </template>
@@ -61,20 +58,17 @@
       },
     },
 
-    computed: {
-      quantity() {
-        return '1'
-      },
-
-      finalPrice() {
-        return '254,00'
-      },
+    data() {
+      return {
+        quantity: 1,
+        finalPrice: null,
+      }
     },
 
     methods: {
       ...mapActions([
-        'updateCart'
-      ])
+        'updateCart',
+      ]),
     }
   }
 </script>
@@ -132,6 +126,7 @@
         font-size: 0.75rem;
         color: #a5a5a5;
         font-weight: 600;
+        cursor: pointer;
       }
     }
 
@@ -140,6 +135,7 @@
       align-items: center;
       justify-content: center;
       gap: 0.2rem;
+      align-self: center;
 
       &--text {
         font-size: 0.875rem;
@@ -151,6 +147,7 @@
         font-weight: 600;
         color: #a5a5a5;
         margin-bottom: 0.2rem;
+        cursor: pointer;
       }
     }
   }

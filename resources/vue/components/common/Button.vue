@@ -3,9 +3,10 @@
       :class="{ 'button__buy': buyBtn }"
       class="button"
       @click="$emit('btnEvent')"
+      :style="{ 'background-color': backColor, color: color }"
     >
         <p class="button__text" v-if="buyBtn">
-           R$ {{ btnPrice }}
+           {{ btnPrice }}
         </p>
         <p class="button__text">
             {{ btnText }}
@@ -29,6 +30,14 @@
             buyBtn: {
               type: Boolean,
               default: false
+            },
+            backColor: {
+              type: String,
+              default: ''
+            },
+            color: {
+              type: String,
+              default: ''
             }
         }
     }
