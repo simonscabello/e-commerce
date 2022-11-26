@@ -7,7 +7,7 @@
     >
     </div>
 
-    <div class="item-card__column">
+    <div class="item-card__column--info">
       <div>
         <p class="item-card__column__title">
           {{ item.name }}
@@ -17,18 +17,21 @@
         </p>
       </div>
 
-      <p>
+      <p
+        class="item-card__column__title--action"
+        @click="updateCart(item.id)"
+      >
         Remover
       </p>
     </div>
 
     <div class="item-card__column">
       <p class="item-card__column__title">
-        QUANTIDADE
+        QTD
       </p>
 
       <div class="item-card__column__qtd">
-        <p>
+        <p class="item-card__column__qtd--text">
           {{ quantity }}
         </p>
         <span class="material-symbols-outlined">
@@ -41,12 +44,14 @@
       <p class="item-card__column__title">
         TOTAL
       </p>
-        {{ finalPrice }}
+        R$ {{ finalPrice }}
     </div>
   </div>
 </template>
 
 <script>
+  import { mapActions } from 'vuex';
+
   export default {
     name: 'itemCard',
 
@@ -65,15 +70,28 @@
         return '254,00'
       },
     },
+
+    methods: {
+      ...mapActions([
+        'updateCart'
+      ])
+    }
   }
 </script>
 
 <style lang="scss" scoped>
 .item-card {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 4rem;
+  grid-template-columns: repeat(4, auto);
+  gap: 6rem;
   margin-top: 3rem;
+
+  @media screen and (max-width: 768px) {
+    column-gap: 1rem;
+    grid-template-columns: auto auto;
+    row-gap: 0.5rem;
+    margin-top: 1rem;
+  }
 
   p {
     margin: 0;
@@ -84,7 +102,18 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 0.5rem;
+    gap: 1.5rem;
+
+    @media screen and (max-width: 768px) {
+      gap: 0.5rem;
+    }
+    
+    &--info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
 
     &__img {
       height: 200px
@@ -98,12 +127,31 @@
         font-size: 0.75rem;
         color: #a5a5a5;
       }
+
+      &--action {
+        font-size: 0.75rem;
+        color: #a5a5a5;
+        font-weight: 600;
+      }
     }
 
     &__qtd {
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 0.2rem;
+
+      &--text {
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      .material-symbols-outlined {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #a5a5a5;
+        margin-bottom: 0.2rem;
+      }
     }
   }
 }

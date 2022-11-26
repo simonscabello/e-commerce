@@ -14,13 +14,28 @@
                 {{ product.brand }}
               </p>
             </div>
-            <Button
-              btnText="COMPRAR"
-              :btnPrice="product.price"
-              buyBtn
-              class="single-product__details__btn"
-              @btnEvent="addToCart()"
-            />
+
+            <div class="single-product__details__btn-group">
+              <Button
+                btnText="COMPRAR"
+                :btnPrice="product.price"
+                buyBtn
+                class="single-product__details__btn-group__btn"
+                @btnEvent="addToCart()"
+              />
+              <router-link
+                :to="{ name: 'cart' }"
+                class="single-product__details__btn-group__link"
+              >
+                <Button
+                  v-if="cartLength"
+                  btnText="VER CARRINHO"
+                  :btnPrice="product.price"
+                  class="single-product__details__btn-group__btn"
+                />
+              </router-link>
+            </div>
+
             <p class="single-product__details__description">
               {{ product.description }}
             </p>
@@ -30,7 +45,7 @@
 
 <script>
 import Button from '../../components/common/Button.vue'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
     name: "SingleProduct",
@@ -41,15 +56,19 @@ export default {
 
     data() {
       return {
-        product: {
-          id: 1,
-          url: "https://img.ltwebstatic.com/images3_pi/2022/08/23/1661237839cb4c76109f1dca2393c88ef782922733_thumbnail_600x.webp",
-          name: "SUNGLASSES SYMPHONY",
-          price: "254,00",
-          brand: "White",
-          description: "Os óculos de sol percorreram um longo caminho desde que eram apenas uma maneira de proteger os olhos do sol. Eles evoluíram para uma forma de moda, com diferentes estilos entrando e saindo de moda. Esta é uma nova versão do clássico óculos de sol. O design fino e forte oferece uma aparência sofisticada, enquanto a ponte nasal flexível proporciona um ajuste confortável e seguro."
-        },
+        product: {},
       };
+    },
+
+    created() {
+      this.product = this.chosenProduct;
+    },
+
+    computed: {
+      ...mapGetters([
+        'cartLength',
+        'chosenProduct'
+      ])
     },
 
     methods: {
@@ -99,6 +118,17 @@ export default {
         font-size: 1.5rem;
         margin: 0;
         font-weight: 700;
+      }
+    }
+
+    &__btn-group {
+      gap: 0.5rem;
+      display: flex;
+      flex-direction: column;
+
+      &__link {
+        text-decoration: none;
+        transition: all 0.2s ease;
       }
     }
   }
