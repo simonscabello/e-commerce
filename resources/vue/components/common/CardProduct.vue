@@ -1,7 +1,7 @@
 <template>
     <div class="card-product" @click="$emit('event')">
         <div
-          class="card-product__img d-block w-90"
+          class="card-product__img"
           :style="{ 'background-image': `url(${productUrl})`, 'width': width }"
         />
         <div

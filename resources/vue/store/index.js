@@ -25,8 +25,9 @@ const cart = new Vuex.Store({
     },
 
     updateCart({ state }, id) {
-
-      // commit('UPDATE_CART', newCart);
+      const item = this.state.cart.findIndex(item => item.id === id);
+      
+      this.state.cart.splice(item, 1);
     }
   },
 

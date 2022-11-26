@@ -49,8 +49,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   margin: 3rem;
+  min-height: calc(100vh - 416px);
 
   @media screen and (max-width: 768px) {
     margin: 1.5rem;
