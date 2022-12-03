@@ -30,31 +30,28 @@
           class="cart__bottom"
         >
           <div class="cart__bottom__info">
-            <div class="cart__bottom__info__column">
-              <p>Subtotal</p>
-              <p>R$ 100,00</p>
-            </div>
-
-            <div class="cart__bottom__info__column">
-              <p>Entrega</p>
-              <p>Grátis</p>
-            </div>
-
-            <div class="cart__bottom__info__column--total">
-              <p>TOTAL</p>
-              <p>R$ 100,00</p>
-            </div>
+            <FinalCart />
           </div>
 
           <div class="cart__bottom__btn">
-            <Button
-              btn-text="FINALIZAR"
-              backColor="#3a3a3a"
-              color="white"
-            />
-            <Button
-              btn-text="CONTINUAR COMPRANDO"
-            />
+            <router-link
+              :to="{ name: 'checkout' }"
+              class="cart__bottom__btn--link"
+            >
+              <Button
+                btn-text="FINALIZAR"
+                backColor="#3a3a3a"
+                color="white"
+              />
+            </router-link>
+            <router-link
+              :to="{ name: 'products' }"
+              class="cart__bottom__btn--link"
+            >
+              <Button
+                btn-text="CONTINUAR COMPRANDO"
+              />
+            </router-link>
           </div>
         </section>
     </div>
@@ -64,7 +61,7 @@
   import { mapGetters } from 'vuex'
   import ItemCard from '../components/cartComponents/ItemCard.vue'
   import Button from '../components/common/Button.vue'
-
+  import FinalCart from '../components/cartComponents/FinalCart.vue'
 
   export default {
     name: 'Cart',
@@ -78,6 +75,7 @@
     components: {
       ItemCard,
       Button,
+      FinalCart,
     },
 
     computed: {
@@ -120,27 +118,8 @@
       margin-top: 2rem;
       width: 50%;
 
-      &__column {
-        font-size: 0.75rem;
-        font-weight: 600;
-        display: flex;
-        justify-content: space-between;
-
-        p {
-          margin-bottom: 0;
-        }
-
-        &--total {
-          font-size: 0.75rem;
-          font-weight: 700;
-          display: flex;
-          justify-content: space-between;
-          margin-top: 1rem;
-
-          p {
-            margin-bottom: 0;
-          }
-        }
+      @media screen and (max-width: 768px) {
+        width: 100%;
       }
     }
 
@@ -150,6 +129,14 @@
       display: flex;
       flex-direction: column;
       gap: 0.5rem;
+
+      @media screen and (max-width: 768px) {
+        width: 100%;
+      }
+
+      &--link {
+        text-decoration: none;
+      }
     }
   }
 }
