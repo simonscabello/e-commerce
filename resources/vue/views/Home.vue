@@ -1,7 +1,8 @@
 <template>
-    <div>
+    <div class="home">
         <HomePhotos />
         <HomeProducts />
+        <img src="../../assets/img/home-img.png" />
     </div>
 </template>
 
@@ -18,3 +19,11 @@
         }
     }
 </script>
+
+<style lang="scss" scoped>
+.home {
+  img {
+    width: 93vw;
+  }
+}
+</style>

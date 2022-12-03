@@ -1,19 +1,30 @@
 <template>
   <div class="footer">
-      <FooterContent
-        v-for="info in info"
-        :key="info.id"
-        :footer-label="info.label"
-        :footer-text="info.text"
-      />
+      <div class="footer__content" :style="{ 'margin-top': marginSize }">
+        <FooterContent
+          v-for="info in info"
+          :key="info.id"
+          :footer-label="info.label"
+          :footer-text="info.text"
+        />
 
-      <div class="footer__top" @click="backToTop">
+        <div class="footer__content__top" @click="backToTop">
+          <p>
+            TOPO
+          </p>
+          <span class="material-symbols-outlined">
+            expand_less
+          </span>
+        </div>
+      </div>
+
+      <div class="footer__credits">
         <p>
-          TOPO
+          Website interface inspired by Maryna Ryzhova's design
         </p>
-        <span class="material-symbols-outlined">
-          expand_less
-        </span>
+        <a href="https://www.behance.net/gallery/147132655/E-commerce-marketplace">
+         Design Repository here
+        </a>
       </div>
   </div>
 </template>
@@ -74,6 +85,12 @@
       FooterContent,
     },
 
+    computed: {
+      marginSize() {
+        return this.$route.name === 'about' ? '0rem' : '3rem';
+      }
+    },
+
     methods: {
       backToTop() {
         document.body.scrollTop = 0; // For Safari
@@ -85,27 +102,56 @@
 
 <style lang="scss" scoped>
 .footer {
-  padding: 2rem;
-  background-color: #f8f8f8;
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
-  @media screen and (min-width: 768px) {
-    grid-template-columns: 1fr 1fr 1fr auto;
+  &__content {
+    padding: 2rem;
+    background-color: #f8f8f8;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 3rem;
+
+    @media screen and (min-width: 768px) {
+      grid-template-columns: 1fr 1fr 1fr auto;
+    }
+
+    &__top {
+      font-size: 0.875rem;
+      color: #cdcdcd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      margin-top: 0;
+
+      @media screen and (max-width: 768px) {
+        margin-top: 2rem;
+      }
+
+      p {
+        margin: 0;
+        font-weight: 700;
+      }
+    }
   }
 
-  &__top {
-    font-size: 0.875rem;
-    color: #cdcdcd;
+  &__credits {
+    align-self: center;
+    font-size: 0.75rem;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    cursor: pointer;
+    padding: 0.5rem;
+    gap: 1rem;
 
     p {
       margin: 0;
-      font-weight: 700;
+    }
+
+    a {
+      text-decoration: none;
+      color: gray;
+      font-weight: 600;
     }
   }
 }

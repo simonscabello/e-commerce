@@ -5,6 +5,8 @@ import Home from '../vue/views/Home.vue';
 import About from '../vue/views/About.vue';
 import Products from '../vue/views/Products/Index.vue';
 import SingleProduct from '../vue/views/Products/SingleProduct.vue';
+import Cart from '../vue/views/Cart.vue';
+import Checkout from '../vue/views/Checkout.vue';
 
 Vue.use(VueRouter);
 
@@ -32,6 +34,16 @@ const router = new VueRouter({
             name: 'SingleProduct',
             props: route => ({ id: String(route.params.id) }),
             component: SingleProduct
+        },
+        {
+            path: '/carrinho',
+            name: 'cart',
+            component: Cart
+        },
+        {
+            path: '/checkout',
+            name: 'checkout',
+            component: Checkout
         }
         
     ]

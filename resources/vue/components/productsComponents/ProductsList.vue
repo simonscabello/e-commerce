@@ -8,13 +8,14 @@
             :product-price="product.price"
             :brand-name="product.brand"
             class="products-list__item"
-            @event="openProductPage(product.id)"
+            @event="openProductPage(product)"
         />
     </section>
 </template>
 
 <script>
 import CardProduct from '../common/CardProduct.vue'
+import { mapActions } from 'vuex'
 
 export default {
     name: "ProductsList",
@@ -29,6 +30,7 @@ export default {
                   price: "254,00",
                   brand: "White",
                   class: "carousel-item active",
+                  description: "Os óculos de sol percorreram um longo caminho desde que eram apenas uma maneira de proteger os olhos do sol. Eles evoluíram para uma forma de moda, com diferentes estilos entrando e saindo de moda. Esta é uma nova versão do clássico óculos de sol. O design fino e forte oferece uma aparência sofisticada, enquanto a ponte nasal flexível proporciona um ajuste confortável e seguro."
                 },
                 {
                   id: 2,
@@ -37,6 +39,7 @@ export default {
                     price: "158,00",
                     brand: "Green Marl",
                     class: "carousel-item",
+                    description: "Os óculos de sol percorreram um longo caminho desde que eram apenas uma maneira de proteger os olhos do sol. Eles evoluíram para uma forma de moda, com diferentes estilos entrando e saindo de moda. Esta é uma nova versão do clássico óculos de sol. O design fino e forte oferece uma aparência sofisticada, enquanto a ponte nasal flexível proporciona um ajuste confortável e seguro."
                 },
                 {
                   id: 3,
@@ -45,6 +48,7 @@ export default {
                     price: "175,00",
                     brand: "Green Marl",
                     class: "carousel-item",
+                    description: "Os óculos de sol percorreram um longo caminho desde que eram apenas uma maneira de proteger os olhos do sol. Eles evoluíram para uma forma de moda, com diferentes estilos entrando e saindo de moda. Esta é uma nova versão do clássico óculos de sol. O design fino e forte oferece uma aparência sofisticada, enquanto a ponte nasal flexível proporciona um ajuste confortável e seguro."
                 },
                 {
                   id: 4,
@@ -53,6 +57,7 @@ export default {
                     price: "254,00",
                     brand: "White",
                     class: "carousel-item active",
+                    description: "Os óculos de sol percorreram um longo caminho desde que eram apenas uma maneira de proteger os olhos do sol. Eles evoluíram para uma forma de moda, com diferentes estilos entrando e saindo de moda. Esta é uma nova versão do clássico óculos de sol. O design fino e forte oferece uma aparência sofisticada, enquanto a ponte nasal flexível proporciona um ajuste confortável e seguro."
                 },
                 {
                   id: 5,
@@ -61,6 +66,7 @@ export default {
                     price: "158,00",
                     brand: "Green Marl",
                     class: "carousel-item",
+                    description: "Os óculos de sol percorreram um longo caminho desde que eram apenas uma maneira de proteger os olhos do sol. Eles evoluíram para uma forma de moda, com diferentes estilos entrando e saindo de moda. Esta é uma nova versão do clássico óculos de sol. O design fino e forte oferece uma aparência sofisticada, enquanto a ponte nasal flexível proporciona um ajuste confortável e seguro."
                 },
                 {
                   id: 6,
@@ -69,6 +75,7 @@ export default {
                     price: "175,00",
                     brand: "Green Marl",
                     class: "carousel-item",
+                    description: "Os óculos de sol percorreram um longo caminho desde que eram apenas uma maneira de proteger os olhos do sol. Eles evoluíram para uma forma de moda, com diferentes estilos entrando e saindo de moda. Esta é uma nova versão do clássico óculos de sol. O design fino e forte oferece uma aparência sofisticada, enquanto a ponte nasal flexível proporciona um ajuste confortável e seguro."
                 },
                 {
                   id: 7,
@@ -77,6 +84,7 @@ export default {
                     price: "254,00",
                     brand: "White",
                     class: "carousel-item active",
+                    description: "Os óculos de sol percorreram um longo caminho desde que eram apenas uma maneira de proteger os olhos do sol. Eles evoluíram para uma forma de moda, com diferentes estilos entrando e saindo de moda. Esta é uma nova versão do clássico óculos de sol. O design fino e forte oferece uma aparência sofisticada, enquanto a ponte nasal flexível proporciona um ajuste confortável e seguro."
                 },
                 {
                   id: 8,
@@ -85,6 +93,7 @@ export default {
                     price: "158,00",
                     brand: "Green Marl",
                     class: "carousel-item",
+                    description: "Os óculos de sol percorreram um longo caminho desde que eram apenas uma maneira de proteger os olhos do sol. Eles evoluíram para uma forma de moda, com diferentes estilos entrando e saindo de moda. Esta é uma nova versão do clássico óculos de sol. O design fino e forte oferece uma aparência sofisticada, enquanto a ponte nasal flexível proporciona um ajuste confortável e seguro."
                 },
                 {
                   id: 9,
@@ -93,6 +102,7 @@ export default {
                     price: "175,00",
                     brand: "Green Marl",
                     class: "carousel-item",
+                    description: "Os óculos de sol percorreram um longo caminho desde que eram apenas uma maneira de proteger os olhos do sol. Eles evoluíram para uma forma de moda, com diferentes estilos entrando e saindo de moda. Esta é uma nova versão do clássico óculos de sol. O design fino e forte oferece uma aparência sofisticada, enquanto a ponte nasal flexível proporciona um ajuste confortável e seguro."
                 },
                 {
                   id: 10,
@@ -101,6 +111,7 @@ export default {
                     price: "254,00",
                     brand: "White",
                     class: "carousel-item active",
+                    description: "Os óculos de sol percorreram um longo caminho desde que eram apenas uma maneira de proteger os olhos do sol. Eles evoluíram para uma forma de moda, com diferentes estilos entrando e saindo de moda. Esta é uma nova versão do clássico óculos de sol. O design fino e forte oferece uma aparência sofisticada, enquanto a ponte nasal flexível proporciona um ajuste confortável e seguro."
                 },
                 {
                   id: 11,
@@ -109,6 +120,7 @@ export default {
                     price: "158,00",
                     brand: "Green Marl",
                     class: "carousel-item",
+                    description: "Os óculos de sol percorreram um longo caminho desde que eram apenas uma maneira de proteger os olhos do sol. Eles evoluíram para uma forma de moda, com diferentes estilos entrando e saindo de moda. Esta é uma nova versão do clássico óculos de sol. O design fino e forte oferece uma aparência sofisticada, enquanto a ponte nasal flexível proporciona um ajuste confortável e seguro."
                 },
                 {
                   id: 12,
@@ -117,6 +129,7 @@ export default {
                     price: "175,00",
                     brand: "Green Marl",
                     class: "carousel-item",
+                    description: "Os óculos de sol percorreram um longo caminho desde que eram apenas uma maneira de proteger os olhos do sol. Eles evoluíram para uma forma de moda, com diferentes estilos entrando e saindo de moda. Esta é uma nova versão do clássico óculos de sol. O design fino e forte oferece uma aparência sofisticada, enquanto a ponte nasal flexível proporciona um ajuste confortável e seguro."
                 },
             ],
         };
@@ -127,8 +140,14 @@ export default {
     },
 
     methods: {
-      openProductPage(id) {
-        this.$router.replace({ name: 'SingleProduct', params: { id: id } });
+      ...mapActions([
+        'productSelected',
+      ]),
+
+      openProductPage(product) {
+        this.productSelected(product)
+
+        this.$router.replace({ name: 'SingleProduct', params: { id: product.id } });
       }
     }
 };
