@@ -18,8 +18,8 @@ class CreateProductsTable extends Migration
             $table->foreignId('file_id')->constrained();
             $table->string('name');
             $table->text('description');
+            $table->text('brand');
             $table->decimal('price', 10, 2);
-            $table->string('slug');
             $table->timestamps();
         });
     }

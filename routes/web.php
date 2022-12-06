@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix('admin')->group(function () {
+    Auth::routes();
+    Route::middleware('auth')->group(function () {
+        Route::resource('product', ProductController::class);
+    });
+});
+
 Route::get('/{any}', function () {
     return view('layouts.vue');
 })->where('any', '.*');
-
-Auth::routes();
