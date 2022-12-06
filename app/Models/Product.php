@@ -4,7 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * @method static create(array $array)
+ */
 class Product extends Model
 {
     use HasFactory;
@@ -13,6 +17,12 @@ class Product extends Model
         'name',
         'price',
         'description',
-        'slug'
+        'brand',
+        'file_id',
     ];
+
+    public function photo(): BelongsTo
+    {
+        return $this->belongsTo(File::class, 'file_id');
+    }
 }
