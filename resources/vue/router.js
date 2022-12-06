@@ -7,6 +7,7 @@ import Products from '../vue/views/Products/Index.vue';
 import SingleProduct from '../vue/views/Products/SingleProduct.vue';
 import Cart from '../vue/views/Cart.vue';
 import Checkout from '../vue/views/Checkout.vue';
+import Finish from '../vue/views/Finish.vue';
 
 Vue.use(VueRouter);
 
@@ -44,6 +45,11 @@ const router = new VueRouter({
             path: '/checkout',
             name: 'checkout',
             component: Checkout
+        },
+        {
+            path: '/final',
+            name: 'Finish',
+            component: Finish
         }
         
     ]

@@ -5,43 +5,77 @@
     </h1>
 
     <section class="finish__info">
-      <section class="finish__info__section">
-      <h1 class="finish__info__subtext">
-        INDENTIFICAÇÃO
-      </h1>
+      <section class="finish__info__section__first-column">
+        <section class="finish__info__section id">
+          <h1 class="finish__info__subtext">
+            INDENTIFICAÇÃO
+          </h1>
 
-      <div class="finish__info__section__form">
-        <p>
-          Mayara Pimenta
-        </p>
+          <div class="finish__info__section__form">
+            <Input
+              v-for="(input, index) in ids"
+              :key="input.id"
+              :id="input.id"
+              :label="input.label"
+              :index="index"
+              :setText="setId"
+            />
+          </div>
+        </section>
 
-        <p>
-          mayaralrpimenta@gmail.com
-        </p>
-      </div>
-    </section>
+        <section class="finish__info__section payment">
+          <h1 class="finish__info__subtext">
+            PAGAMENTO
+          </h1>
 
-    <section class="finish__info__section">
-      <h1 class="finish__info__subtext">
-        ENDEREÇO
-      </h1>
+          <div class="finish__info__section__form">
+            <select v-model="selected" @change="showPayment = true" class="finish__info__section__form--select">
+              <option value="">Selecione...</option>
+              <option value="Cartão de Crédito">Cartão de Crédito</option>
+              <option value="Boleto">Boleto</option>
+              <option value="PIX">PIX</option>
+            </select>
+          </div>
+        </section>
+      </section>
 
-      <form action="submit" class="finish__info__section__form">
-        <Input
-          v-for="(input, index) in inputs"
-          :key="input.id"
-          :id="input.id"
-          :label="input.label"
-          :index="index"
-          :setText="setText"
-        />
-      </form>
-    </section>
+      <section class="finish__info__section address">
+        <h1 class="finish__info__subtext">
+          ENDEREÇO
+        </h1>
 
-    <section class="finish__info__section">
+        <form action="submit" class="finish__info__section__form">
+          <Input
+            v-for="(input, index) in inputs"
+            :key="input.id"
+            :id="input.id"
+            :label="input.label"
+            :index="index"
+            :setText="setText"
+          />
+        </form>
+      </section>
+
+      <section class="finish__info__section purchase">
       <h1 class="finish__info__subtext">
         RESUMO DA COMPRA
       </h1>
+
+      <div class="finish__info__section__address" v-if="showIdConfirmation">
+        <p>
+          Dados Pessoais
+        </p>
+          {{ id.name }}
+          <br>
+          {{ id.email }}
+      </div>
+
+      <div class="finish__info__section__address" v-if="showPayment">
+        <p>
+          Forma de pagamento
+        </p>
+        {{ selected }}
+      </div>
 
       <div class="finish__info__section__address" v-if="showConfirmation">
         <p>
@@ -59,9 +93,9 @@
       </div>
     </section>
 
-    <a class="finish__info__btn">
+    <router-link class="finish__info__btn" :to="{ name:'Finish' }">
       <Button btnText="FINALIZAR"/>
-    </a>
+    </router-link>
     </section>
   </div>
 </template>
@@ -82,6 +116,16 @@
 
     data() {
       return {
+        ids: [
+          {
+            id: 1,
+            label: 'Nome*',
+          },
+          {
+            id: 2,
+            label: 'E-mail*',
+          },
+        ],
         inputs: [
           {
             id: 1,
@@ -121,7 +165,14 @@
           city: '',
           state: '',
         },
+        id: {
+          name: '',
+          email: '',
+        },
+        showIdConfirmation: false,
         showConfirmation: false,
+        showPayment: false,
+        selected: '',
       }
     },
 
@@ -137,6 +188,13 @@
         if(index === 5) this.address.city = `${text} `;
         if(index === 6) this.address.state = `- ${text}.`;
 
+      },
+
+      setId(text, index) {
+        this.showIdConfirmation = true;
+
+        if(index === 0) this.id.name = `Nome: ${text}`;
+        if(index === 1) this.id.email = `E-mail: ${text}`;
       },
     }
   }
@@ -166,11 +224,35 @@
       background-color: #f8f8f8;
       padding: 2rem;
 
+      &__first-column {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        .id {
+          height: 350px;
+        }
+
+        .payment {
+          grid-row: 2;
+          height: 350px;
+        }
+      }
+
       &__form {
         p {
           margin: 0;
           font-size: 0.875rem;
           color: #a5a5a5;
+        }
+
+        &--select {
+          width: 100%;
+          height: 2rem;
+          border-radius: 0.25rem;
+          padding-left: 0.75rem;
+          font-size: 0.875rem;
+          border: 1px solid #a5a5a5;
         }
       }
 
@@ -192,6 +274,10 @@
     &__btn {
       grid-column: 3;
       text-decoration: none;
+    }
+
+    .address {
+      overflow: auto;
     }
   }
 }
