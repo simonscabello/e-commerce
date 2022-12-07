@@ -98,7 +98,7 @@ export default {
   }
 
   &__img {
-    width: 100%;
+    width: 450px;
   }
 
   &__details {

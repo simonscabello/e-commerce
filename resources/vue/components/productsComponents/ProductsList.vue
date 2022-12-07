@@ -32,7 +32,7 @@ export default {
 
     mounted() {
         window.axios.get('/api/products').then(res => {
-            this.posts = res.data
+            this.products = res.data
         })
     },
 
